@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Rest;
 
+use App\GameCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class GameCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = GameCategory::with('games')->get();
+        return response()->json($categories);
     }
 
     /**
