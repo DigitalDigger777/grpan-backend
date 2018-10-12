@@ -15,7 +15,7 @@ class GameCategoryController extends Controller
      */
     public function index()
     {
-        $categories = GameCategory::with('games')->get();
+        $categories = GameCategory::all();
         return response()->json($categories);
     }
 
