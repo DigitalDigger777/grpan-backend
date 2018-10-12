@@ -12,6 +12,16 @@ class StaticContentTableSeeder extends Seeder
      */
     public function run()
     {
+        $this->load('EN');
+        $this->load('FR');
+        $this->load('RU');
+    }
+
+    /**
+     * @param $locale
+     */
+    private function load($locale)
+    {
         $homePage = new StaticContent();
         $homePage->route = '/';
         $homePage->data = [
@@ -44,7 +54,7 @@ We are now a leading mobile games publisher dedicated to making your hyper-casua
                 'text' => 'Stay in touch and get fresh updates about Green Panda Games!'
             ]
         ];
-        $homePage->locale = 'EN';
+        $homePage->locale = $locale;
 
         $homePage->save();
 
@@ -76,7 +86,7 @@ We are now a leading mobile games publisher dedicated to making your hyper-casua
                 'title' => 'Learn more about our published games ?'
             ]
         ];
-        $homePage->locale = 'EN';
+        $homePage->locale = $locale;
 
         $homePage->save();
 
@@ -94,7 +104,7 @@ We are now a leading mobile games publisher dedicated to making your hyper-casua
 game you want to publish with us. We will reply to you as soon as possible !'
             ]
         ];
-        $homePage->locale = 'EN';
+        $homePage->locale = $locale;
 
         $homePage->save();
 
@@ -110,7 +120,7 @@ game you want to publish with us. We will reply to you as soon as possible !'
                 'title' => 'Learn more about our published games ?'
             ]
         ];
-        $homePage->locale = 'EN';
+        $homePage->locale = $locale;
 
         $homePage->save();
 
@@ -123,8 +133,8 @@ game you want to publish with us. We will reply to you as soon as possible !'
                 'text' => 'A question​?​ ​Perhaps even a suggestion? We\'d be happy to hear from you, and we\'ll get back to you with an answer as soon as we can!'
             ]
         ];
-        $homePage->locale = 'EN';
+        $homePage->locale = $locale;
 
-        $homePage->save();
+        $homePage->save();        
     }
 }
