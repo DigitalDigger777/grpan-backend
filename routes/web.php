@@ -34,4 +34,5 @@ Route::resource('/rest/job-category','Rest\JobCategoryController');
 Route::resource('/rest/job','Rest\JobController');
 Route::resource('/rest/legal-pages','Rest\LegalPageController');
 Route::resource('/rest/testimonials','Rest\TestimonialController');
-
+Route::resource('/rest/static-content','Rest\StaticContentController');
+Route::resource('/rest/setting','Rest\SettingController');
