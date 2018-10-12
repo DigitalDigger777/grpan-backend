@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Rest;
 
+use App\LegalPage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class LegalPageController extends Controller
      */
     public function index()
     {
-        //
+        $pages = LegalPage::all();
+        return response()->json($pages);
     }
 
     /**

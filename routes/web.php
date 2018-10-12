@@ -26,3 +26,12 @@ Route::resource('/admin/legal-pages','LegalPageController');
 Route::resource('/admin/testimonials','TestimonialController');
 Route::resource('/admin/static-content','StaticContentController');
 Route::resource('/admin/setting','SettingController');
+
+
+Route::resource('/rest/game-category','Rest\GameCategoryController');
+Route::resource('/rest/game','Rest\GameController');
+Route::resource('/rest/job-category','Rest\JobCategoryController');
+Route::resource('/rest/job','Rest\JobController');
+Route::resource('/rest/legal-pages','Rest\LegalPageController');
+Route::resource('/rest/testimonials','Rest\TestimonialController');
+

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Rest;
 
+use App\Job;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        //
+        $jobs = Job::with('category')->get();
+        return response()->json($jobs);
     }
 
     /**
