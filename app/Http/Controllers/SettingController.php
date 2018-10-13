@@ -73,7 +73,15 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $setting = Setting::find($id);
+        $setting->data = [
+            'publishing_form_email' => $request->get('publishing_form_email'),
+            'contact_us_email' => $request->get('contact_us_email')
+        ];
+
+        $setting->save();
+
+        return redirect('/admin/setting/1/edit')->with('success', 'Static Content has been updated');
     }
 
     /**

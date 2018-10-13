@@ -78,7 +78,7 @@ class GameTableSeeder extends Seeder
         $game->image = 'public/images/preview_fish_orbit.png';
         $game->locale = $locale;
         $game->category()->associate($category);
-        $game->save();        
+        $game->save();
     }
 }
 

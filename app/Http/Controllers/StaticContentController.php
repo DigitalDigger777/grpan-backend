@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Library\StaticContentBuilder;
 use App\StaticContent;
 use Illuminate\Http\Request;
 
@@ -77,7 +78,16 @@ class StaticContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $staticContentBuilder = new StaticContentBuilder();
+        $data = $staticContentBuilder->build($request);
+
+        if (count($data) > 0) {
+            $staticContent = StaticContent::find($id);
+            $staticContent->data = $data;
+            $staticContent->save();
+        }
+
+        return redirect('/admin/static-content')->with('success', 'Static Content has been updated');
     }
 
     /**

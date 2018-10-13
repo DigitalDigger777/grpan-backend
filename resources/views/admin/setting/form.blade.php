@@ -31,7 +31,7 @@
             <label for="title">Contact Us Form Email</label>
             <input type="text"
                    class="form-control"
-                   name="publishing_form_email"
+                   name="contact_us_email"
                    placeholder="Title"
                    value="{{$setting->data['contact_us_email']}}"
             >

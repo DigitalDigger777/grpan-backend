@@ -36,8 +36,11 @@
                             @if(isset($content->data['header']['title']))
                                 <div class="form-group">
                                     <label for="header_title">Header Title</label>
-                                    <input type="text" class="form-control"
-                                           id="header_title" name="header_title" placeholder="Title"
+                                    <input type="text"
+                                           class="form-control"
+                                           id="header_title"
+                                           name="header_title"
+                                           placeholder="Title"
                                            value="{{$content->data['header']['title']}}"
                                     >
                                 </div>
@@ -45,9 +48,12 @@
 
                             @if(isset($content->data['header']['text']))
                                 <div class="form-group">
-                                    <label for="header_title">Header Text</label>
-                                    <input type="text" class="form-control"
-                                           id="header_text" name="header_text" placeholder="Header Text"
+                                    <label for="header_text">Header Text</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="header_text"
+                                           name="header_text"
+                                           placeholder="Header Text"
                                            value="{{$content->data['header']['text']}}"
                                     >
                                 </div>
@@ -151,7 +157,8 @@
                                 <div class="form-group">
                                     <label for="news_title">News Title</label>
                                     <input type="text" class="form-control"
-                                           id="news_title" name="news_title" placeholder="News Title"
+                                           id="news_title"
+                                           name="news_title" placeholder="News Title"
                                            value="{{$content->data['news']['title']}}"
                                     >
                                 </div>

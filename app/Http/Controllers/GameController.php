@@ -119,7 +119,8 @@ class GameController extends Controller
 
         $game->save();
 
-        return redirect('/admin/game')->with('success', 'Game has been updated');    }
+        return redirect('/admin/game')->with('success', 'Game has been updated');
+    }
 
     /**
      * Remove the specified resource from storage.

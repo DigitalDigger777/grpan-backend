@@ -2,7 +2,11 @@
 
 use Illuminate\Database\Seeder;
 use App\StaticContent;
+use App\Library\StaticContentBuilder;
 
+/**
+ * Class StaticContentTableSeeder
+ */
 class StaticContentTableSeeder extends Seeder
 {
     /**
