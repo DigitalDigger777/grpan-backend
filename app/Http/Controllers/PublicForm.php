@@ -29,15 +29,12 @@ class PublicForm extends Controller
         ];
 
 
-
-
-
         Mail::send('emails.public', $data, function ($message) {
             $setting = Setting::all();
-
+            $message->from('no-reply@greenpanda.ceant.net', 'New publication request');
+            $message->to('korman.yuri@gmail.com');
             if (count($setting) > 0) {
-                $message->from('no-reply@greenpanda.ceant.net', 'New publication request');
-                $message->to($setting[0]->data->publishing_form_email);
+
             }
 
         });
