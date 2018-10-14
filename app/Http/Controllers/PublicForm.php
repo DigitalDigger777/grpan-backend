@@ -10,17 +10,15 @@ class PublicForm extends Controller
 {
     public function send(Request $request)
     {
-//        $request->validate([
-//            'name'      =>  'required',
-//            'company'   =>  'required',
-//            'game_url'  => 'required',
-//            'email'     => 'required',
-//            'skype'     =>  'required',
-//            'message'   => 'required'
-//        ]);
+        $request->validate([
+            'name'      =>  'required',
+            'company'   =>  'required',
+            'game_url'  => 'required',
+            'email'     => 'required',
+            'skype'     =>  'required',
+            'message'   => 'required'
+        ]);
 
-        echo 'sss';
-        exit;
         $data = [
             'name'      => $request->input('name'),
             'company'   => $request->input('company'),
@@ -31,15 +29,15 @@ class PublicForm extends Controller
         ];
 
 
-//        Mail::send('emails.public', $data, function ($message) {
-//            $setting = Setting::all();
-//            $message->from('no-reply@greenpanda.ceant.net', 'New publication request');
-//            $message->to('korman.yuri@gmail.com');
-//            if (count($setting) > 0) {
-//
-//            }
-//
-//        });
+        Mail::send('emails.public', $data, function ($message) {
+            $setting = Setting::all();
+            $message->from('no-reply@greenpanda.ceant.net', 'New publication request');
+            $message->to('korman.yuri@gmail.com');
+            if (count($setting) > 0) {
+
+            }
+
+        });
 
         return response()->json($data);
     }
