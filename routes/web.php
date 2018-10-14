@@ -39,7 +39,7 @@ Route::resource('/rest/setting','Rest\SettingController');
 
 
 Route::post('/rest/public-form/send','PublicForm@send');
-Route::post('/rest/public-form/send','ContactUsForm@send');
+Route::post('/rest/contact-us-form/send','ContactUsForm@send');
 
 Route::get('/rest/public-form/send','PublicForm@send');
-Route::get('/rest/public-form/send','ContactUsForm@send');
+Route::get('/rest/contact-us-form/send','ContactUsForm@send');
