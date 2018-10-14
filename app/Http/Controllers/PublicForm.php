@@ -19,6 +19,8 @@ class PublicForm extends Controller
 //            'message'   => 'required'
 //        ]);
 
+        echo 'sss';
+        exit;
         $data = [
             'name'      => $request->input('name'),
             'company'   => $request->input('company'),
