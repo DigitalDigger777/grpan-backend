@@ -39,6 +39,6 @@ class PublicForm extends Controller
 //
 //        });
 
-        return response()->json(['message' => 'Request completed']);
+        return response()->json($data);
     }
 }
