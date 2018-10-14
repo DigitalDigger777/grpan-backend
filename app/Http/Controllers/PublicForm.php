@@ -10,14 +10,14 @@ class PublicForm extends Controller
 {
     public function send(Request $request)
     {
-        $request->validate([
-            'name'      =>  'required',
-            'company'   =>  'required',
-            'game_url'  => 'required',
-            'email'     => 'required',
-            'skype'     =>  'required',
-            'message'   => 'required'
-        ]);
+//        $request->validate([
+//            'name'      =>  'required',
+//            'company'   =>  'required',
+//            'game_url'  => 'required',
+//            'email'     => 'required',
+//            'skype'     =>  'required',
+//            'message'   => 'required'
+//        ]);
 
         $data = [
             'name'      => $request->input('name'),
