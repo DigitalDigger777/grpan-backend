@@ -40,3 +40,6 @@ Route::resource('/rest/setting','Rest\SettingController');
 
 Route::post('/rest/public-form/send','PublicForm@send');
 Route::post('/rest/public-form/send','ContactUsForm@send');
+
+Route::get('/rest/public-form/send','PublicForm@send');
+Route::get('/rest/public-form/send','ContactUsForm@send');
