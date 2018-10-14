@@ -38,5 +38,5 @@ Route::resource('/rest/static-content','Rest\StaticContentController');
 Route::resource('/rest/setting','Rest\SettingController');
 
 
-Route::post('/admin/public-form/send','PublicForm@send');
-Route::post('/admin/public-form/send','ContactUsForm@send');
+Route::post('/rest/public-form/send','PublicForm@send');
+Route::post('/rest/public-form/send','ContactUsForm@send');
