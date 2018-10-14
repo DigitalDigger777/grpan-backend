@@ -22,7 +22,7 @@ class PublicForm extends Controller
         $data = [
             'name'      => $request->input('name'),
             'company'   => $request->input('company'),
-            'gameUrl'   => $request->input('game_url'),
+            'game_url'   => $request->input('game_url'),
             'email'     => $request->input('email'),
             'skype'     => $request->input('skype'),
             'message'   => $request->input('message')
