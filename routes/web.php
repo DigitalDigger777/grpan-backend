@@ -36,3 +36,7 @@ Route::resource('/rest/legal-pages','Rest\LegalPageController');
 Route::resource('/rest/testimonials','Rest\TestimonialController');
 Route::resource('/rest/static-content','Rest\StaticContentController');
 Route::resource('/rest/setting','Rest\SettingController');
+
+
+Route::post('/admin/public-form/send','PublicForm@send');
+Route::post('/admin/public-form/send','ContactUsForm@send');
