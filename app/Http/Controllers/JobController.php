@@ -9,12 +9,21 @@ use Illuminate\Http\Request;
 class JobController extends Controller
 {
     /**
+     * GameCategoryController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $locale = $request->get('locale', "EN");
         $jobs = Job::where('locale', $locale)->get();
         return view('admin/job/items', [
@@ -26,10 +35,12 @@ class JobController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $job = new Job();
         $categories = JobCategory::all();
         return view('admin/job/form', [
@@ -46,6 +57,7 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
             'name'    => 'required',
             'locale' => 'required'
@@ -82,11 +94,13 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $categories = JobCategory::all();
         $job = Job::find($id);
 
@@ -105,6 +119,8 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
+
         $request->validate([
             'name'    => 'required',
             'locale' => 'required'

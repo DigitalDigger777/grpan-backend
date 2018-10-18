@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
     /**
+     * GameCategoryController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -52,11 +60,13 @@ class SettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $setting = Setting::find($id);
 
         return view('admin/setting/form', [
@@ -73,6 +83,8 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
+
         $setting = Setting::find($id);
         $setting->data = [
             'publishing_form_email' => $request->get('publishing_form_email'),

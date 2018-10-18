@@ -12,6 +12,6 @@ class LegalPage extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content', 'locale'
+        'title', 'content', 'locale', 'slug'
     ];
 }

@@ -51,6 +51,23 @@ class LegalPageController extends Controller
         //
     }
 
+
+    /**
+     * Show by slug.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function showBySlug(Request $request)
+    {
+        //$request->user()->authorizeRoles(['admin']);
+        $slug = $request->get('slug');
+        $locale = $request->get('locale');
+        $page = LegalPage::where('slug', '=', $slug)->where('locale', '=', $locale)->first();
+
+        return response()->json($page);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

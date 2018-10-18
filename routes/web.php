@@ -43,3 +43,5 @@ Route::post('/rest/contact-us-form/send','ContactUsForm@send');
 
 Route::get('/rest/public-form/send','PublicForm@send');
 Route::get('/rest/contact-us-form/send','ContactUsForm@send');
+
+Route::get('/rest/legal-page/show-by-slug','Rest\LegalPageController@showBySlug');

@@ -12,6 +12,15 @@
         @else
             @method('POST')
         @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control"
@@ -19,6 +28,17 @@
                    value="{{$page->title}}"
             >
             {{--<small id="nameHelp" class="form-text text-muted">Name of game category</small>--}}
+        </div>
+        <div class="form-group">
+            <label for="title">Slug</label>
+            <input type="text" class="form-control"
+                   id="slug"
+                   name="slug"
+                   placeholder="Slug"
+                   aria-describedby="slugHelp"
+                   value="{{$page->slug}}"
+            >
+            <small id="slugHelp" class="form-text text-muted">slug for url should be unique</small>
         </div>
         <div class="form-group">
             <label for="locale">Language</label>

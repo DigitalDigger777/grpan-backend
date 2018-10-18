@@ -6,15 +6,29 @@ use App\Game;
 use App\GameCategory;
 use Illuminate\Http\Request;
 
+/**
+ * Class GameController
+ * @package App\Http\Controllers
+ */
 class GameController extends Controller
 {
     /**
+     * GameCategoryController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $locale = $request->get('locale', "EN");
         $games = Game::where('locale', $locale)->get();
         return view('admin/game/items', [
@@ -26,10 +40,12 @@ class GameController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $categories = GameCategory::all();
         $game = new Game();
         return view('admin/game/form', [
@@ -46,6 +62,7 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
             'name'   => 'required',
             'url'    => 'required',
@@ -84,11 +101,13 @@ class GameController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $categories = GameCategory::all();
 
         $game = Game::find($id);
@@ -107,6 +126,7 @@ class GameController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
             'name'   => 'required',
             'url'    => 'required',

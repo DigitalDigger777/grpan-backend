@@ -5,15 +5,29 @@ namespace App\Http\Controllers;
 use App\JobCategory;
 use Illuminate\Http\Request;
 
+/**
+ * Class JobCategoryController
+ * @package App\Http\Controllers
+ */
 class JobCategoryController extends Controller
 {
     /**
+     * GameCategoryController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $locale = $request->get('locale', "EN");
 
         $categories = JobCategory::where('locale', $locale)->get();
@@ -26,10 +40,12 @@ class JobCategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $category = new JobCategory();
 
         return view('admin/job/category/form', [
@@ -45,6 +61,7 @@ class JobCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
             'name'    => 'required',
             'locale' => 'required'
@@ -75,11 +92,13 @@ class JobCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $category = JobCategory::find($id);
         return view('admin/job/category/form', [
             'category' => $category
@@ -95,6 +114,7 @@ class JobCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
             'name'    => 'required',
             'locale' => 'required'

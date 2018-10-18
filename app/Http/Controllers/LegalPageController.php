@@ -5,8 +5,20 @@ namespace App\Http\Controllers;
 use App\LegalPage;
 use Illuminate\Http\Request;
 
+/**
+ * Class LegalPageController
+ * @package App\Http\Controllers
+ */
 class LegalPageController extends Controller
 {
+    /**
+     * GameCategoryController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +26,7 @@ class LegalPageController extends Controller
      */
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $locale = $request->get('locale', "EN");
         $pages = LegalPage::where('locale', $locale)->get();
         return view('admin/legal_page/items', [
@@ -25,10 +38,12 @@ class LegalPageController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $page = new LegalPage();
         return view('admin/legal_page/form', [
             'page' => $page
@@ -43,16 +58,19 @@ class LegalPageController extends Controller
      */
     public function store(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
+            'slug'     => 'required',
             'title'     => 'required',
             'content'   => 'required',
             'locale'    => 'required'
         ]);
 
         $page = new LegalPage([
-            'title' => $request->get('title'),
-            'content' => $request->get('content'),
-            'locale' => $request->get('locale')
+            'title'     => $request->get('title'),
+            'slug'      => $request->get('slug'),
+            'content'   => $request->get('content'),
+            'locale'    => $request->get('locale')
         ]);
 
         $page->save();
@@ -77,8 +95,9 @@ class LegalPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $page = LegalPage::find($id);
         return view('admin/legal_page/form', [
             'page' => $page
@@ -94,13 +113,16 @@ class LegalPageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
+            'slug'     => 'required',
             'title'     => 'required',
             'content'   => 'required',
             'locale'    => 'required'
         ]);
 
         $page = LegalPage::find($id);
+        $page->slug = $request->get('slug');
         $page->title = $request->get('title');
         $page->content = $request->get('content');
         $page->locale = $request->get('locale');

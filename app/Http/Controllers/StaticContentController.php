@@ -9,11 +9,20 @@ use Illuminate\Http\Request;
 class StaticContentController extends Controller
 {
     /**
+     * GameCategoryController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $locale = $request->get('locale', "EN");
         $items = StaticContent::where('locale', $locale)->get();
 
@@ -58,11 +67,13 @@ class StaticContentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $content = StaticContent::find($id);
         return view('admin/static_content/form', [
             'content' => $content
@@ -78,6 +89,7 @@ class StaticContentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $staticContentBuilder = new StaticContentBuilder();
         $data = $staticContentBuilder->build($request);
 

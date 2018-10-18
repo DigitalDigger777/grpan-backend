@@ -34,10 +34,12 @@ class GameCategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $category = new GameCategory();
         return view('admin/game/category/form', [
             'category' => $category
@@ -52,6 +54,7 @@ class GameCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
             'name'    => 'required',
             'locale' => 'required'
@@ -82,11 +85,13 @@ class GameCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $category = GameCategory::find($id);
 
         return view('admin/game/category/form', [
@@ -103,6 +108,7 @@ class GameCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
             'name'    => 'required',
             'locale' => 'required'
