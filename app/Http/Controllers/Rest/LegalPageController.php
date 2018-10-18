@@ -13,9 +13,10 @@ class LegalPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pages = LegalPage::all();
+        $locale = $request->get('locale');
+        $pages = LegalPage::where('locale', '=', $locale);
         return response()->json($pages);
     }
 
