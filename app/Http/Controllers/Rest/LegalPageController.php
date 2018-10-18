@@ -16,7 +16,7 @@ class LegalPageController extends Controller
     public function index(Request $request)
     {
         $locale = $request->get('locale');
-        $pages = LegalPage::where('locale', '=', $locale);
+        $pages = LegalPage::where('locale', '=', $locale)->get();
         return response()->json($pages);
     }
 
