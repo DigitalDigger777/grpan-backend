@@ -47,19 +47,24 @@ class GameController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'name'   => 'required',
             'url'    => 'required',
             'image'  => 'required',
             'locale' => 'required'
         ]);
 
         $path = $request->file('image')->store('public/images');
+        $categoryId = $request->get('category');
+
+        $category = GameCategory::find($categoryId);
 
         $game = new Game([
+            'name'  => $request->get('name'),
             'url'    => $request->get('url'),
             'image'  => $path,
             'locale' => $request->get('locale')
         ]);
-
+        $game->category()->associate($category);
         $game->save();
 
         return redirect('/admin/game')->with('success', 'Stock has been added');
@@ -103,20 +108,27 @@ class GameController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'name'   => 'required',
             'url'    => 'required',
-            'image'  => 'required',
             'locale' => 'required'
         ]);
 
-        $path = $request->file('image')->store('public/images');
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('public/images');
+        }
+
+        $categoryId = $request->get('category');
+
+        $category = GameCategory::find($categoryId);
 
         $game = Game::find($id);
+        $game->name = $request->get('name');
         $game->url = $request->get('url');
-        if ($path) {
+        if ($request->file('image')) {
             $game->image = $path;
         }
         $game->locale = $request->get('locale');
-
+        $game->category()->associate($category);
         $game->save();
 
         return redirect('/admin/game')->with('success', 'Game has been updated');

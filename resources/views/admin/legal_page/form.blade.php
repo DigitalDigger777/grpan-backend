@@ -30,7 +30,7 @@
         </div>
         <div class="form-group">
             <label for="description">Content</label>
-            <textarea class="form-control" id="content" name="content" rows="15">{{$page->title}}</textarea>
+            <textarea class="form-control" id="content" name="content" rows="15">{{$page->content}}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

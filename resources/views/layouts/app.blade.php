@@ -138,6 +138,10 @@
             $('#page_description').summernote({
                 height: 200
             });
+
+            $('#content').summernote({
+                height: 200
+            });
         });
     </script>
 </body>

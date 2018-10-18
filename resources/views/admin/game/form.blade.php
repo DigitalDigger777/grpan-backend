@@ -14,6 +14,15 @@
         @endif
 
         <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control"
+                   id="name"
+                   name="name"
+                   placeholder="Name"
+                   value="{{$game->name}}"
+            >
+        </div>
+        <div class="form-group">
             <label for="url">URL</label>
             <input type="text" class="form-control"
                    id="url"
