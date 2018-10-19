@@ -36,6 +36,6 @@ class SupportMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('email.contact_us');
+        return $this->view('emails.contact_us');
     }
 }
