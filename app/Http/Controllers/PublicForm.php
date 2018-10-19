@@ -30,7 +30,7 @@ class PublicForm extends Controller
             'message'   => $request->input('message')
         ];
 
-        $setting = DB::table('settigns')->first();
+        $setting = DB::table('settings')->first();
 
 //        print_r($data);
 //        exit;
