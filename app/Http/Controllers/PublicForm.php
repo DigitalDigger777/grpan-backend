@@ -32,7 +32,8 @@ class PublicForm extends Controller
 
         $setting = DB::table('settings')->first();
 
-//        print_r($data);
+        print_r($setting);
+        exit;
 //        exit;
         Mail::to($setting->data['publishing_form_email'])->send(new PublicMailable(
             $data['name'],
