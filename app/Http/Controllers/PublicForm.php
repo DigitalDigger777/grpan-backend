@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\PublicMailable;
 use App\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class PublicForm extends Controller
@@ -29,9 +30,11 @@ class PublicForm extends Controller
             'message'   => $request->input('message')
         ];
 
+        $setting = DB::table('settigns')->first();
+
 //        print_r($data);
 //        exit;
-        Mail::to('korman.yuri@gmail.com')->send(new PublicMailable(
+        Mail::to($setting->data->publishing_form_email)->send(new PublicMailable(
             $data['name'],
             $data['company'],
             $data['game_url'],
