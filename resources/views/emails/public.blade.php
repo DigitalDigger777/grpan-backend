@@ -7,6 +7,6 @@
 <p>{{ $game_url }}</p>
 <p>{{ $email }}</p>
 <p>{{ $skype }}</p>
-{{--<p>{{$message}}</p>--}}
+<p>{{ $message }}</p>
 </body>
 </html>
