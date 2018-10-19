@@ -11,14 +11,22 @@ class SupportMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $game;
+    public $name;
+    public $email;
+    public $text;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($game, $name, $email, $message)
     {
-        //
+        $this->game     = $game;
+        $this->name     = $name;
+        $this->email    = $email;
+        $this->text     = $message;
     }
 
     /**
