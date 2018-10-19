@@ -24,6 +24,7 @@ Route::resource('/admin/job-category','JobCategoryController');
 Route::resource('/admin/job','JobController');
 Route::resource('/admin/legal-pages','LegalPageController');
 Route::resource('/admin/testimonials','TestimonialController');
+Route::resource('/admin/gpg-perks','GPGPerksController');
 Route::resource('/admin/static-content','StaticContentController');
 Route::resource('/admin/setting','SettingController');
 
@@ -34,6 +35,7 @@ Route::resource('/rest/job-category','Rest\JobCategoryController');
 Route::resource('/rest/job','Rest\JobController');
 Route::resource('/rest/legal-pages','Rest\LegalPageController');
 Route::resource('/rest/testimonials','Rest\TestimonialController');
+Route::resource('/rest/gpr-perks','Rest\GPRPerksController');
 Route::resource('/rest/static-content','Rest\StaticContentController');
 Route::resource('/rest/setting','Rest\SettingController');
 

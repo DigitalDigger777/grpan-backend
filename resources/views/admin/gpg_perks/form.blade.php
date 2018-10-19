@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Testimonial Form
+    GPG Perk Form
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
             </ul>
         </div>
     @endif
-    <form method="post" action="{{$testimonial->id ? url('admin/testimonials/' . $testimonial->id ) : url('admin/testimonials')}}" enctype="multipart/form-data">
+    <form method="post" action="{{$testimonial->id ? url('admin/gpg-perks/' . $testimonial->id ) : url('admin/testimonials')}}" enctype="multipart/form-data">
         @csrf
         @if ($testimonial->id)
             @method('PATCH')
@@ -30,14 +30,6 @@
                    value="{{$testimonial->name}}"
             >
             {{--<small id="nameHelp" class="form-text text-muted">Name of game category</small>--}}
-        </div>
-        <div class="form-group">
-            <label for="signature">Signature Name</label>
-            <input type="text" class="form-control"
-                   id="signature" name="signature"
-                   placeholder="Signature Name"
-                   value="{{$testimonial->signature}}"
-            >
         </div>
         <div class="form-group">
             <label for="description">Description</label>

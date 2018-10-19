@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Testimonial;
+use App\GPGPerk;
 use Illuminate\Http\Request;
 
-class TestimonialController extends Controller
+class GPGPerksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class TestimonialController extends Controller
     public function index(Request $request)
     {
         $locale = $request->get('locale', "EN");
-        $testimonials = Testimonial::where('locale', $locale)->get();
+        $testimonials = GPGPerk::where('locale', $locale)->get();
 
-        return view('admin/testimonial/items', [
+        return view('admin/gpg_perks/items', [
             'testimonials' => $testimonials,
             'locale' => $locale
         ]);
@@ -31,8 +31,8 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        $testimonial = new Testimonial();
-        return view('admin/testimonial/form', [
+        $testimonial = new GPGPerk();
+        return view('admin/gpg_perks/form', [
             'testimonial' => $testimonial
         ]);
     }
@@ -47,7 +47,6 @@ class TestimonialController extends Controller
     {
         $request->validate([
             'name'          => 'required',
-            'signature'     => 'required',
             'description'   => 'required',
             'image'         => 'required',
             'ordering'      => 'required',
@@ -56,18 +55,17 @@ class TestimonialController extends Controller
 
         $path = $request->file('image')->store('public/testimonial_images');
 
-        $testimonial = new Testimonial([
-            'name'          => $request->get('name'),
-            'signature'     => $request->get('signature'),
-            'description'   => $request->get('description'),
-            'image'         => $path,
-            'ordering'      => $request->get('ordering'),
-            'locale'        => $request->get('locale')
+        $testimonial = new GPGPerk([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'image' => $path,
+            'ordering' => $request->get('ordering'),
+            'locale' => $request->get('locale')
         ]);
 
         $testimonial->save();
 
-        return redirect('admin/testimonials')->with('success', 'Testimonials has been added');
+        return redirect('admin/gpg-perks')->with('success', 'GPGPerks has been added');
     }
 
     /**
@@ -89,9 +87,9 @@ class TestimonialController extends Controller
      */
     public function edit($id)
     {
-        $testimonial = Testimonial::find($id);
+        $testimonial = GPGPerk::find($id);
 
-        return view('admin/testimonial/form', [
+        return view('admin/gpg_perks/form', [
             'testimonial' => $testimonial
         ]);
     }
@@ -115,9 +113,8 @@ class TestimonialController extends Controller
             $path = $request->file('image')->store('public/testimonial_images');
         }
 
-        $testimonial = Testimonial::find($id);
+        $testimonial = GPGPerk::find($id);
         $testimonial->name = $request->get('name');
-        $testimonial->signature = $request->get('signature');
         $testimonial->description = $request->get('description');
 
         if ($request->file('image')) {
@@ -129,7 +126,7 @@ class TestimonialController extends Controller
 
         $testimonial->save();
 
-        return redirect('admin/testimonials')->with('success', 'Testimonials has been added');
+        return redirect('admin/gpg-perks')->with('success', 'GPGPerks has been added');
     }
 
     /**
