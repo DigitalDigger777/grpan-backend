@@ -29,8 +29,8 @@ class PublicForm extends Controller
             'message'   => $request->input('message')
         ];
 
-        print_r($data);
-        exit;
+//        print_r($data);
+//        exit;
         Mail::to('korman.yuri@gmail.com')->send(new PublicMailable(
             $data['name'],
             $data['company'],
