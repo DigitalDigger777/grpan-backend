@@ -34,7 +34,7 @@ class PublicForm extends Controller
 
 //        print_r($data);
 //        exit;
-        Mail::to($setting->data->publishing_form_email)->send(new PublicMailable(
+        Mail::to($setting->data['publishing_form_email'])->send(new PublicMailable(
             $data['name'],
             $data['company'],
             $data['game_url'],
