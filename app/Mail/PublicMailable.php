@@ -16,7 +16,7 @@ class PublicMailable extends Mailable
     public $game_url;
     public $email;
     public $skype;
-    public $message;
+    public $text;
 
     /**
      * Create a new message instance.
@@ -25,12 +25,12 @@ class PublicMailable extends Mailable
      */
     public function __construct($name, $company, $game_url, $email, $skype, $message)
     {
-        $this->name = $name;
-        $this->company = $company;
+        $this->name     = $name;
+        $this->company  = $company;
         $this->game_url = $game_url;
-        $this->email = $email;
-        $this->skype = $skype;
-        $this->message = $message;
+        $this->email    = $email;
+        $this->skype    = $skype;
+        $this->text     = $message;
     }
 
     /**
