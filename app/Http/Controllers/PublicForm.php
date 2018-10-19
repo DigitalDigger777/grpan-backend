@@ -32,6 +32,8 @@ class PublicForm extends Controller
 
         $setting = DB::table('settings')->first();
 
+        get_class($setting->data);
+        exit;
         print_r($setting->data->publishing_form_email);
         exit;
 //        exit;
