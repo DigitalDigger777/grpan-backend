@@ -32,9 +32,9 @@ class PublicForm extends Controller
 
         $setting = DB::table('settings')->first();
 
-        $data = json_decode($setting->data);
+        $dataSetting = json_decode($setting->data);
 
-        Mail::to($data->publishing_form_email)->send(new PublicMailable(
+        Mail::to($dataSetting->publishing_form_email)->send(new PublicMailable(
             $data['name'],
             $data['company'],
             $data['game_url'],
