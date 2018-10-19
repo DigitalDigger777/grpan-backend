@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PublicMailable;
 use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -29,15 +30,23 @@ class PublicForm extends Controller
         ];
 
 
-        Mail::send('emails.public', $data, function ($message) {
-            $setting = Setting::all();
-            $message->from('no-reply@greenpanda.ceant.net', 'New publication request');
-            $message->to('korman.yuri@gmail.com');
-            if (count($setting) > 0) {
-
-            }
-
-        });
+        Mail::to('korman.yuri@gmail.com')->send(new PublicMailable(
+            $data['name'],
+            $data['company'],
+            $data['game_url'],
+            $data['email'],
+            $data['skype'],
+            $data['message']
+        ));
+//        Mail::send('emails.public', $data, function ($message) {
+//            $setting = Setting::all();
+//            $message->from('no-reply@greenpanda.ceant.net', 'New publication request');
+//            $message->to('korman.yuri@gmail.com');
+//            if (count($setting) > 0) {
+//
+//            }
+//
+//        });
 
         return response()->json($data);
     }
