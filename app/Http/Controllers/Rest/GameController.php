@@ -13,13 +13,14 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $locale = $request->get('locale');
         $games = Game::with([
             'category' => function($query){
                 $query->orderBy('id', 'ASC');
             }
-        ])->get();
+        ])->where('locale','=', $locale)->get();
         return response()->json($games);
     }
 
