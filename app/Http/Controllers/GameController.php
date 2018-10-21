@@ -162,6 +162,9 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $game = Game::find($id);
+        $game->delete();
+
+        return redirect('/admin/game')->with('success', 'Game has been delete');
     }
 }

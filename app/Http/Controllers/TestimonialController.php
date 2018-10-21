@@ -140,6 +140,9 @@ class TestimonialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $testimonial = Testimonial::find($id);
+        $testimonial->delete();
+
+        return redirect('admin/testimonials')->with('success', 'Testimonials has been delete');
     }
 }

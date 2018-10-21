@@ -12,6 +12,6 @@ class Testimonial extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'image', 'ordering', 'locale'
+        'name', 'description', 'image', 'ordering', 'locale', 'signature'
     ];
 }

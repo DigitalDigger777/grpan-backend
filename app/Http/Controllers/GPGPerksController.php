@@ -137,6 +137,9 @@ class GPGPerksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $testimonial = GPGPerk::find($id);
+        $testimonial->delete();
+
+        return redirect('admin/gpg-perks')->with('success', 'GPGPerks has been remove');
     }
 }

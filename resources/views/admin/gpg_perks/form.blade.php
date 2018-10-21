@@ -14,7 +14,7 @@
             </ul>
         </div>
     @endif
-    <form method="post" action="{{$testimonial->id ? url('admin/gpg-perks/' . $testimonial->id ) : url('admin/testimonials')}}" enctype="multipart/form-data">
+    <form method="post" action="{{$testimonial->id ? url('admin/gpg-perks/' . $testimonial->id ) : url('admin/gpg-perks')}}" enctype="multipart/form-data">
         @csrf
         @if ($testimonial->id)
             @method('PATCH')

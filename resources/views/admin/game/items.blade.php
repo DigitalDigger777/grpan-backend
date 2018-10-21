@@ -58,7 +58,12 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ url('admin/game/' . $game->id . '/edit') }}">Edit</a>
-                        <a class="dropdown-item" href="#">Delete</a>
+                        <form method="post" action="{{ url('admin/game/' . $game->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="dropdown-item" type="submit">Delete</button>
+                        </form>
+
                     </div>
                 </div>
             </td>
