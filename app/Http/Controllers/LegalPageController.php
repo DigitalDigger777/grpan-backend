@@ -140,6 +140,9 @@ class LegalPageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $legalPage = LegalPage::find($id);
+        $legalPage->delete();
+
+        return redirect('admin/legal-pages')->with('success', 'Legal page has been delete');
     }
 }

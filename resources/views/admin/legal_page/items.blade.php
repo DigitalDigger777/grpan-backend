@@ -58,7 +58,11 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{ url('admin/legal-pages/' . $page->id . '/edit') }}">Edit</a>
-                            <a class="dropdown-item" href="#">Delete</a>
+                            <form method="post" action="{{ url('admin/legal-pages/' . $page->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="dropdown-item" type="submit">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </td>
