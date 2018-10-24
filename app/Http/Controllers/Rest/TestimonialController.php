@@ -15,7 +15,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $items = Testimonial::all();
+        $items = Testimonial::with(['game'])->get();
         return response()->json($items);
     }
 
