@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
 use App\Testimonial;
 use Illuminate\Http\Request;
 
@@ -32,8 +33,11 @@ class TestimonialController extends Controller
     public function create()
     {
         $testimonial = new Testimonial();
+        $games = Game::all();
+
         return view('admin/testimonial/form', [
-            'testimonial' => $testimonial
+            'testimonial' => $testimonial,
+            'games' => $games
         ]);
     }
 
@@ -65,6 +69,12 @@ class TestimonialController extends Controller
             'locale'        => $request->get('locale')
         ]);
 
+        $gameId = $request->get('game');
+
+        if ($gameId) {
+            $game = Game::find($gameId);
+            $testimonial->game()->associate($game);
+        }
         $testimonial->save();
 
         return redirect('admin/testimonials')->with('success', 'Testimonials has been added');
@@ -90,9 +100,11 @@ class TestimonialController extends Controller
     public function edit($id)
     {
         $testimonial = Testimonial::find($id);
+        $games = Game::where('locale', 'en')->get();
 
         return view('admin/testimonial/form', [
-            'testimonial' => $testimonial
+            'testimonial' => $testimonial,
+            'games' => $games
         ]);
     }
 
@@ -115,6 +127,10 @@ class TestimonialController extends Controller
             $path = $request->file('image')->store('public/testimonial_images');
         }
 
+        $gameId = $request->get('game');
+
+
+
         $testimonial = Testimonial::find($id);
         $testimonial->name = $request->get('name');
         $testimonial->signature = $request->get('signature');
@@ -126,6 +142,11 @@ class TestimonialController extends Controller
 
         $testimonial->ordering = $request->get('ordering');
         $testimonial->locale = $request->get('locale');
+
+        if ($gameId) {
+            $game = Game::find($gameId);
+            $testimonial->game()->associate($game);
+        }
 
         $testimonial->save();
 

@@ -29,4 +29,11 @@ class Game extends Model
     }
 
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function testimonials()
+    {
+        return $this->hasMany('App\Testimonial');
+    }
 }

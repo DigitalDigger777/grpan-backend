@@ -40,6 +40,15 @@
             >
         </div>
         <div class="form-group">
+            <label for="game">Game</label>
+            <select class="form-control" name="game">
+                <option value="0">--SELECT--</option>
+                @foreach($games as $game)
+                    <option value="{{$game->id}}" {{$game->id && $testimonial->game && $testimonial->game->id == $game->id ? "selected" : ""}}>{{$game->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
             <label for="description">Description</label>
             <textarea class="form-control" id="description" name="description" rows="3">{{$testimonial->description}}</textarea>
         </div>

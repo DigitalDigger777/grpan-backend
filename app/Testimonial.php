@@ -14,4 +14,12 @@ class Testimonial extends Model
     protected $fillable = [
         'name', 'description', 'image', 'ordering', 'locale', 'signature'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function game()
+    {
+        return $this->belongsTo('App\Game');
+    }
 }
