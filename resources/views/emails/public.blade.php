@@ -2,11 +2,11 @@
 <head></head>
 <body style="background: black; color: white">
 <h1>New public request</h1>
-<p>{{ $name }}</p>
-<p>{{ $company }}</p>
-<p>{{ $game_url }}</p>
-<p>{{ $email }}</p>
-<p>{{ $skype }}</p>
+<p>Name: {{ $name }}</p>
+<p>Company: {{ $company }}</p>
+<p>File URL: {{ $game_url }}</p>
+<p>Email: {{ $email }}</p>
+<p>Skype: {{ $skype }}</p>
 <p>{{ $text }}</p>
 </body>
 </html>
