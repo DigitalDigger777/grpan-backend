@@ -69,6 +69,7 @@ class LegalPageController extends Controller
         $page = new LegalPage([
             'title'     => $request->get('title'),
             'slug'      => $request->get('slug'),
+            'url'       => $request->get('url'),
             'content'   => $request->get('content'),
             'locale'    => $request->get('locale')
         ]);
@@ -123,6 +124,7 @@ class LegalPageController extends Controller
 
         $page = LegalPage::find($id);
         $page->slug = $request->get('slug');
+        $page->url = $request->get('url');
         $page->title = $request->get('title');
         $page->content = $request->get('content');
         $page->locale = $request->get('locale');

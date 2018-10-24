@@ -41,6 +41,17 @@
             <small id="slugHelp" class="form-text text-muted">slug for url should be unique</small>
         </div>
         <div class="form-group">
+            <label for="title">Url</label>
+            <input type="text" class="form-control"
+                   id="url"
+                   name="url"
+                   placeholder="Url"
+                   aria-describedby="urlHelp"
+                   value="{{$page->url}}"
+            >
+            <small id="urlHelp" class="form-text text-muted">keep this field empty if not need use url</small>
+        </div>
+        <div class="form-group">
             <label for="locale">Language</label>
             <select class="form-control" id="locale" name="locale">
                 <option {{$page->locale == "EN" ? "selected" : ""}}>EN</option>
