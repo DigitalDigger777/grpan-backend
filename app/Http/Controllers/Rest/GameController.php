@@ -19,7 +19,8 @@ class GameController extends Controller
         $games = Game::with([
             'category' => function($query){
                 $query->orderBy('id', 'ASC');
-            }
+            },
+            'game'
         ])->where('locale','=', $locale)->get();
         return response()->json($games);
     }
