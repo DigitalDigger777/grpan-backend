@@ -16,7 +16,7 @@ class CreateStaticContentsTable extends Migration
         Schema::create('static_contents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('route');
-            $table->json('data');
+            $table->text('data');
             $table->string('locale');
             $table->timestamps();
         });
