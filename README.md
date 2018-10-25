@@ -10,12 +10,13 @@ mysql -uroot -p
 mysql> CREATE DATABASE `greenpanda` /*!40100 DEFAULT CHARACTER SET utf8 */;
 mysql> exit
 ```
+4. change database settings in .env
 
-4. run migrations
+5. run migrations
 ```bash
 php artisan migrate
 ```
-5. run seeders for fill demo data
+6. run seeders for fill demo data
 ```bash
 php artisan db:seed
 ```
