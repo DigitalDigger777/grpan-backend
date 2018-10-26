@@ -88,7 +88,9 @@ class SettingController extends Controller
         $setting = Setting::find($id);
         $setting->data = [
             'publishing_form_email' => $request->get('publishing_form_email'),
-            'contact_us_email' => $request->get('contact_us_email')
+            'contact_us_email'      => $request->get('contact_us_email'),
+            'app_store_url'         => $request->get('app_store_url'),
+            'google_play_url'       => $request->get('google_play_url')
         ];
 
         $setting->save();
