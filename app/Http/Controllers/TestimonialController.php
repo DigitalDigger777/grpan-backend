@@ -29,9 +29,10 @@ class TestimonialController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
         $request->user()->authorizeRoles(['admin']);
         $testimonial = new Testimonial();
@@ -100,7 +101,7 @@ class TestimonialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $request->user()->authorizeRoles(['admin']);
         $testimonial = Testimonial::find($id);
