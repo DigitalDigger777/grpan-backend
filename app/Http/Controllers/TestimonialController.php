@@ -16,6 +16,7 @@ class TestimonialController extends Controller
      */
     public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $locale = $request->get('locale', "EN");
         $testimonials = Testimonial::where('locale', $locale)->get();
 
@@ -32,6 +33,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
+        $request->user()->authorizeRoles(['admin']);
         $testimonial = new Testimonial();
         $games = Game::all();
 
@@ -49,6 +51,7 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
             'name'          => 'required',
             'signature'     => 'required',
@@ -99,6 +102,7 @@ class TestimonialController extends Controller
      */
     public function edit($id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $testimonial = Testimonial::find($id);
         $games = Game::where('locale', 'en')->get();
 
@@ -117,6 +121,7 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $request->validate([
             'name'          => 'required',
             'description'   => 'required',
@@ -161,6 +166,7 @@ class TestimonialController extends Controller
      */
     public function destroy($id)
     {
+        $request->user()->authorizeRoles(['admin']);
         $testimonial = Testimonial::find($id);
         $testimonial->delete();
 
