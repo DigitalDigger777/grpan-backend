@@ -3,6 +3,7 @@
 2. install dependencies
 ```bash
 composer install
+composer dump-autoload
 ```
 3. connect to mysql server and create database
 ```bash
@@ -21,6 +22,11 @@ php artisan migrate
 php artisan db:seed
 ```
 
+7. deploy resources
+```bash
+npm install
+npm run production
+```
 ###relate with frontend on one domain
 You can run backend with frontend on one domain with symbol link, 
 for example:   
