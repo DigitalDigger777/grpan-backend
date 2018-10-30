@@ -27,6 +27,11 @@ php artisan db:seed
 npm install
 npm run production
 ```
+8. add symbol link to storage:
+```bash
+cd public
+ln -s ../storage/app storage
+```
 ###relate with frontend on one domain
 You can run backend with frontend on one domain with symbol link, 
 for example:   
