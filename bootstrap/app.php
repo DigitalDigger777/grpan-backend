@@ -25,8 +25,8 @@ $app = new Illuminate\Foundation\Application(
 | incoming requests to this application from both the web and CLI.
 |
 */
-$app->configure('cors');
-$app->register(Barryvdh\Cors\ServiceProvider::class);
+//$app->configure('cors');
+//$app->singleton(Barryvdh\Cors\ServiceProvider::class);
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
