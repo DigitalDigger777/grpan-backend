@@ -30,7 +30,7 @@ class ContactUsForm extends Controller
         $capcha = $request->input('capcha');
 
         if ($capcha) {
-            $secret = config('CAPCHA_SECREET');
+            $secret = env('CAPCHA_SECREET');
             $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$capcha");
             $captcha_success = json_decode($verify);
 
