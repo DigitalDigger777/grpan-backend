@@ -17,7 +17,8 @@ class ContactUsForm extends Controller
             'game'      => 'required',
             'name'      => 'required',
             'email'     => 'required',
-            'message'   => 'required'
+            'message'   => 'required',
+            'capcha'    => 'required'
         ]);
 
         $data = [
@@ -26,18 +27,31 @@ class ContactUsForm extends Controller
             'email'     => $request->input('email'),
             'message'   => $request->input('message')
         ];
+        $capcha = $request->input('capcha');
+        $secret = '6LcVgnUUAAAAANYBnD73UivvuqhgBN_VNdrOmxRl';
+        $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$capcha");
+        $captcha_success=json_decode($verify);
 
-        $setting = DB::table('settings')->first();
+        if ($captcha_success->success) {
+            $setting = DB::table('settings')->first();
 
-        $dataSetting = json_decode($setting->data);
+            $dataSetting = json_decode($setting->data);
 
-        Mail::to($dataSetting->contact_us_email)->send(new SupportMailable(
-            $data['game'],
-            $data['name'],
-            $data['email'],
-            $data['message']
-        ));
+            Mail::to($dataSetting->contact_us_email)->send(new SupportMailable(
+                $data['game'],
+                $data['name'],
+                $data['email'],
+                $data['message']
+            ));
 
-        return response()->json($data);
+            return response()->json($data);
+        } else {
+            return response()->json([
+                'error' => [
+                    'code' => 401,
+                    'message' => 'Capcha is not verify'
+                ]
+            ]);
+        }
     }
 }
