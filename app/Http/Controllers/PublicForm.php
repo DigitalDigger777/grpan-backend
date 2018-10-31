@@ -58,6 +58,8 @@ class PublicForm extends Controller
                 return response()->json([
                     'error' => [
                         'code' => 401,
+                        'env' => env('CAPCHA_SECREET'),
+                        'env1' => config('CAPCHA_SECREET'),
                         'message' => 'Capcha is not verify'
                     ]
                 ]);
