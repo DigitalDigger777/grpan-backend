@@ -162,10 +162,11 @@ class TestimonialController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $request->user()->authorizeRoles(['admin']);
         $testimonial = Testimonial::find($id);
