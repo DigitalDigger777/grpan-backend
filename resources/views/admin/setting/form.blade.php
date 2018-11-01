@@ -47,21 +47,21 @@
             {{--<small id="nameHelp" class="form-text text-muted">Name of game category</small>--}}
         </div>
         <div class="form-group">
-            <label for="title">App Store URL</label>
+            <label for="title">Publishing URL</label>
             <input type="text"
                    class="form-control"
                    name="app_store_url"
-                   placeholder="App Store URL"
+                   placeholder="Publishing URL"
                    value="{{isset($setting->data['app_store_url']) ? $setting->data['app_store_url'] : ''}}"
             >
             {{--<small id="nameHelp" class="form-text text-muted">Name of game category</small>--}}
         </div>
         <div class="form-group">
-            <label for="title">Google Play URL</label>
+            <label for="title">Classics URL</label>
             <input type="text"
                    class="form-control"
                    name="google_play_url"
-                   placeholder="Google Play URL"
+                   placeholder="Classics URL"
                    value="{{isset($setting->data['google_play_url']) ? $setting->data['google_play_url'] : ''}}"
             >
             {{--<small id="nameHelp" class="form-text text-muted">Name of game category</small>--}}
