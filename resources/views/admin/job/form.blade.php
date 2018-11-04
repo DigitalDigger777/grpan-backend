@@ -27,7 +27,7 @@
             <input type="text" class="form-control"
                    id="name" name="name"
                    placeholder="Position"
-                   value="{{$job->name}}"
+                   value="{{$job->name ? $job->name : old('name')}}"
             >
             {{--<small id="nameHelp" class="form-text text-muted">Name of game category</small>--}}
         </div>
@@ -36,7 +36,7 @@
             <input type="text" class="form-control"
                    name="city"
                    placeholder="Locations"
-                   value="{{$job->city}}"
+                   value="{{$job->city ? $job->city : old('city')}}"
             >
             {{--<small id="nameHelp" class="form-text text-muted">Name of game category</small>--}}
         </div>
@@ -45,7 +45,7 @@
             <select class="form-control" name="category">
                 <option value="0">--SELECT--</option>
                 @foreach($categories as $category)
-                <option value="{{$category->id}}" {{$job->id && $job->category && $job->category->id == $category->id ? "selected" : ""}}>{{$category->name}}</option>
+                <option value="{{$category->id}}" {{($job->id && $job->category && $job->category->id == $category->id) || old('category') ==  $category->id ? "selected" : ""}}>{{$category->name}}</option>
                 @endforeach
             </select>
         </div>

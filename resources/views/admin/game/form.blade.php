@@ -27,7 +27,7 @@
                    id="name"
                    name="name"
                    placeholder="Name"
-                   value="{{$game->name}}"
+                   value="{{ $game->name ? $game->name : old('name')}}"
             >
         </div>
         <div class="form-group">
@@ -36,7 +36,7 @@
                    id="url"
                    name="url"
                    aria-describedby="urlHelp" placeholder="URL"
-                   value="{{$game->url}}"
+                   value="{{$game->url ? $game->url : old('url')}}"
             >
             <small id="urlHelp" class="form-text text-muted">URL of game</small>
         </div>
@@ -45,7 +45,7 @@
             <select class="form-control" name="category">
                 <option value="0">--SELECT--</option>
                 @foreach($categories as $category)
-                    <option value="{{$category->id}}" {{$game->id && $game->category && $game->category->id == $category->id ? "selected" : ""}}>{{$category->name}}</option>
+                    <option value="{{$category->id}}" {{($game->id && $game->category && $game->category->id == $category->id) || old('category') == $category->id ? "selected" : ""}}>{{$category->name}}</option>
                 @endforeach
             </select>
         </div>

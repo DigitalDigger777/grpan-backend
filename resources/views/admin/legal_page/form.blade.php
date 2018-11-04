@@ -25,7 +25,7 @@
             <label for="title">Title</label>
             <input type="text" class="form-control"
                    id="title" name="title" placeholder="Title"
-                   value="{{$page->title}}"
+                   value="{{$page->title ? $page->title : old('title')}}"
             >
             {{--<small id="nameHelp" class="form-text text-muted">Name of game category</small>--}}
         </div>
@@ -36,7 +36,7 @@
                    name="slug"
                    placeholder="Slug"
                    aria-describedby="slugHelp"
-                   value="{{$page->slug}}"
+                   value="{{$page->slug ? $page->slug : old('slug')}}"
             >
             <small id="slugHelp" class="form-text text-muted">slug for url should be unique</small>
         </div>
@@ -47,7 +47,7 @@
                    name="url"
                    placeholder="Url"
                    aria-describedby="urlHelp"
-                   value="{{$page->url}}"
+                   value="{{$page->url ? $page->url : old('url')}}"
             >
             <small id="urlHelp" class="form-text text-muted">keep this field empty if not need use url</small>
         </div>
@@ -61,7 +61,7 @@
         </div>
         <div class="form-group">
             <label for="description">Content</label>
-            <textarea class="form-control" id="content" name="content" rows="15">{{$page->content}}</textarea>
+            <textarea class="form-control" id="content" name="content" rows="15">{{$page->content ? $page->content : old('content')}}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

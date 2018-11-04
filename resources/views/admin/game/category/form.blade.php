@@ -29,7 +29,7 @@
             <input type="text" class="form-control"
                    id="name" name="name"
                    aria-describedby="nameHelp" placeholder="Category"
-                   value="{{$category->name}}"
+                   value="{{$category->name ? $category->name : old('name')}}"
             >
             <small id="nameHelp" class="form-text text-muted">Name of game category</small>
         </div>

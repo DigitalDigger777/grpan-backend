@@ -27,13 +27,13 @@
             <input type="text" class="form-control"
                    id="name" name="name"
                    placeholder="Title"
-                   value="{{$testimonial->name}}"
+                   value="{{$testimonial->name ? $testimonial->name : old('name')}}"
             >
             {{--<small id="nameHelp" class="form-text text-muted">Name of game category</small>--}}
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="3">{{$testimonial->description}}</textarea>
+            <textarea class="form-control" id="description" name="description" rows="3">{{$testimonial->description ? $testimonial->description : old('description')}}</textarea>
         </div>
         <div class="form-group">
             <label for="locale">Language</label>
