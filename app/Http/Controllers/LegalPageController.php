@@ -63,7 +63,8 @@ class LegalPageController extends Controller
             'slug'     => 'required',
             'title'     => 'required',
             'content'   => 'required',
-            'locale'    => 'required'
+            'locale'    => 'required',
+            'visible'   => 'required'
         ]);
 
         $page = new LegalPage([
@@ -71,7 +72,8 @@ class LegalPageController extends Controller
             'slug'      => $request->get('slug'),
             'url'       => $request->get('url'),
             'content'   => $request->get('content'),
-            'locale'    => $request->get('locale')
+            'locale'    => $request->get('locale'),
+            'status'    => $request->get('visible')
         ]);
 
         $page->save();
@@ -119,7 +121,8 @@ class LegalPageController extends Controller
             'slug'     => 'required',
             'title'     => 'required',
             'content'   => 'required',
-            'locale'    => 'required'
+            'locale'    => 'required',
+            'visible'   => 'required'
         ]);
 
         $page = LegalPage::find($id);
@@ -128,6 +131,7 @@ class LegalPageController extends Controller
         $page->title = $request->get('title');
         $page->content = $request->get('content');
         $page->locale = $request->get('locale');
+        $page->status = $request->get('visible');
 
         $page->save();
 

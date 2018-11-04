@@ -43,6 +43,7 @@
         <tr>
             <th scope="col" style="width: 10px">#</th>
             <th scope="col">title</th>
+            <th scope="col">visible</th>
             <th scope="col" style="width: 80px">action</th>
         </tr>
         </thead>
@@ -51,6 +52,13 @@
             <tr>
                 <th scope="row">{{ $page->id }}</th>
                 <td>{{ $page->title }}</td>
+                <td>
+                    @if($page->status == 1)
+                        <span class="badge badge-success">yes</span>
+                    @else
+                        <span class="badge badge-danger">no</span>
+                    @endif
+                </td>
                 <td>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

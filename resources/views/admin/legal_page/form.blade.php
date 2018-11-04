@@ -52,6 +52,13 @@
             <small id="urlHelp" class="form-text text-muted">keep this field empty if not need use url</small>
         </div>
         <div class="form-group">
+            <label for="locale">Visible</label>
+            <select class="form-control" id="visible" name="visible">
+                <option value="1" {{$page->status == 1 ? "selected" : ""}}>Yes</option>
+                <option value="0" {{$page->status == 0 ? "selected" : ""}}>No</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="locale">Language</label>
             <select class="form-control" id="locale" name="locale">
                 <option {{$page->locale == "EN" ? "selected" : ""}}>EN</option>
