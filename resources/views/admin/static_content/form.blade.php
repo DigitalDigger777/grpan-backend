@@ -113,7 +113,7 @@
 
             <!--success_story-->
             @if(isset($content->data['success_story']))
-                <div class="card">
+                <div class="card" style="display: none">
                     <div class="card-header" id="headingThree">
                         <h5 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
