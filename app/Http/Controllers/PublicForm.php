@@ -14,11 +14,7 @@ class PublicForm extends Controller
     {
         $request->validate([
             'name'      =>  'required',
-            'company'   =>  'required',
-            'game_url'  => 'required',
-            'email'     => 'required',
-            'skype'     =>  'required',
-            'message'   => 'required'
+            'email'     => 'required'
         ]);
 
         $data = [
