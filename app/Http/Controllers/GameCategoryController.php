@@ -68,7 +68,7 @@ class GameCategoryController extends Controller
 
         $gameCategory->save();
 
-        return redirect('admin/game-category')->with('success', 'Category has been added');
+        return redirect('admin/game-category?locale=' . $request->get('locale'))->with('success', 'Category has been added');
     }
 
     /**
@@ -120,7 +120,7 @@ class GameCategoryController extends Controller
 
         $category ->save();
 
-        return redirect('admin/game-category')->with('success', 'Category has been updated');
+        return redirect('admin/game-category?locale=' . $request->get('locale'))->with('success', 'Category has been updated');
     }
 
     /**

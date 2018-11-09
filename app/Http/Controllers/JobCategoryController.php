@@ -75,7 +75,7 @@ class JobCategoryController extends Controller
 
         $category->save();
 
-        return redirect('admin/job-category')->with('success', 'Category has been added');
+        return redirect('admin/job-category?locale=' . $request->get('locale'))->with('success', 'Category has been added');
     }
 
     /**
@@ -126,7 +126,7 @@ class JobCategoryController extends Controller
 
         $category->save();
 
-        return redirect('admin/job-category')->with('success', 'Category has been updated');
+        return redirect('admin/job-category?locale=' . $request->get('locale'))->with('success', 'Category has been updated');
     }
 
     /**

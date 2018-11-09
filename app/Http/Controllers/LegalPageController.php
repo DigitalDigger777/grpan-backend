@@ -78,7 +78,7 @@ class LegalPageController extends Controller
 
         $page->save();
 
-        return redirect('admin/legal-pages')->with('success', 'Legal Page has been added');
+        return redirect('admin/legal-pages?locale=' . $request->get('locale'))->with('success', 'Legal Page has been added');
     }
 
     /**
@@ -135,7 +135,7 @@ class LegalPageController extends Controller
 
         $page->save();
 
-        return redirect('admin/legal-pages')->with('success', 'Legal Page has been updated');
+        return redirect('admin/legal-pages?locale=' . $request->get('locale'))->with('success', 'Legal Page has been updated');
     }
 
     /**
@@ -147,8 +147,9 @@ class LegalPageController extends Controller
     public function destroy($id)
     {
         $legalPage = LegalPage::find($id);
+        $locale = $legalPage->locale;
         $legalPage->delete();
 
-        return redirect('admin/legal-pages')->with('success', 'Legal page has been delete');
+        return redirect('admin/legal-pages?locale=' . $locale)->with('success', 'Legal page has been delete');
     }
 }

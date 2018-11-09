@@ -77,7 +77,7 @@ class JobController extends Controller
 
         $job->save();
 
-        return redirect('admin/job')->with('success', 'Job has been added');
+        return redirect('admin/job?locale=' . $request->get('locale'))->with('success', 'Job has been added');
     }
 
     /**
@@ -137,7 +137,7 @@ class JobController extends Controller
 
         $job->save();
 
-        return redirect('admin/job')->with('success', 'Job has been updated');
+        return redirect('admin/job?locale=' . $request->get('locale'))->with('success', 'Job has been updated');
     }
 
     /**
@@ -149,8 +149,9 @@ class JobController extends Controller
     public function destroy($id)
     {
         $job = Job::find($id);
+        $locale = $job->locale;
         $job->delete();
 
-        return redirect('admin/job')->with('success', 'Job has been delete');
+        return redirect('admin/job?locale=' . $locale)->with('success', 'Job has been delete');
     }
 }

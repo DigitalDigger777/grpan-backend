@@ -84,7 +84,7 @@ class GameController extends Controller
         $game->category()->associate($category);
         $game->save();
 
-        return redirect('/admin/game')->with('success', 'Stock has been added');
+        return redirect('/admin/game?locale=' . $request->get('locale'))->with('success', 'Stock has been added');
     }
 
     /**
@@ -164,8 +164,9 @@ class GameController extends Controller
     public function destroy($id)
     {
         $game = Game::find($id);
+        $locale = $game->locale;
         $game->delete();
 
-        return redirect('/admin/game')->with('success', 'Game has been delete');
+        return redirect('/admin/game?locale=' . $locale)->with('success', 'Game has been delete');
     }
 }

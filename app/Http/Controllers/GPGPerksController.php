@@ -65,7 +65,7 @@ class GPGPerksController extends Controller
 
         $testimonial->save();
 
-        return redirect('admin/gpg-perks')->with('success', 'GPGPerks has been added');
+        return redirect('admin/gpg-perks?locale=' . $request->get('locale'))->with('success', 'GPGPerks has been added');
     }
 
     /**
@@ -126,7 +126,7 @@ class GPGPerksController extends Controller
 
         $testimonial->save();
 
-        return redirect('admin/gpg-perks')->with('success', 'GPGPerks has been added');
+        return redirect('admin/gpg-perks?locale=' . $request->get('locale'))->with('success', 'GPGPerks has been added');
     }
 
     /**
@@ -138,8 +138,9 @@ class GPGPerksController extends Controller
     public function destroy($id)
     {
         $testimonial = GPGPerk::find($id);
+        $locale = $testimonial->locale;
         $testimonial->delete();
 
-        return redirect('admin/gpg-perks')->with('success', 'GPGPerks has been remove');
+        return redirect('admin/gpg-perks?locale=' . $locale)->with('success', 'GPGPerks has been remove');
     }
 }
