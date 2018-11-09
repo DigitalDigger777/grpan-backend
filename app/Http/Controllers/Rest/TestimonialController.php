@@ -11,11 +11,13 @@ class TestimonialController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = Testimonial::with(['game'])->get();
+        $locale = $request->get('locale');
+        $items = Testimonial::with(['game'])->whereRaw('locale=?', [$locale])->get();
         return response()->json($items);
     }
 
