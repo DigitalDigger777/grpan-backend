@@ -109,7 +109,7 @@
                                 <a class="nav-link {{ request()->is('admin/static-content') ? 'active' : '' }}" href="{{ url('admin/static-content') }}">Static Content</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->is('admin/setting/1/edit') ? 'active' : '' }}" href="{{ url('admin/setting/1/edit') }}">Setting</a>
+                                <a class="nav-link {{ request()->is('admin/setting/1/edit') ? 'active' : '' }}" href="{{ url('admin/setting/1/edit') }}">Settings</a>
                             </li>
                         </ul>
                     </div>
