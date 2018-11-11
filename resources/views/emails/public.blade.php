@@ -1,12 +1,13 @@
 <html>
 <head></head>
-<body style="background: black; color: white">
-<h1>New public request</h1>
-<p>Name: {{ $name }}</p>
-<p>Company: {{ $company }}</p>
-<p>File URL: {{ $game_url }}</p>
-<p>Email: {{ $email }}</p>
-<p>Skype: {{ $skype }}</p>
+<body>
+<h1>Publishing</h1>
+<p><b>Name</b>: {{ $name }}</p>
+<p><b>Company</b>: {{ $company }}</p>
+<p><b>File URL</b>: {{ $game_url }}</p>
+<p><b>Email</b>: {{ $email }}</p>
+<p><b>Skype</b>: {{ $skype }}</p>
+<br>
 <p>{{ $text }}</p>
 </body>
 </html>

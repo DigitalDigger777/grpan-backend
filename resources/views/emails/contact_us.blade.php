@@ -1,10 +1,11 @@
 <html>
 <head></head>
-<body style="background: black; color: white">
+<body>
 <h1>New support request</h1>
-<p>Game: {{ $game }}</p>
-<p>Name: {{ $name }}</p>
-<p>Email: {{ $email }}</p>
+<p><b>Game</b>: {{ $game }}</p>
+<p><b>Name</b>: {{ $name }}</p>
+<p><b>Email</b>: {{ $email }}</p>
+<br>
 <p>{{ $text }}</p>
 </body>
 </html>
