@@ -75,6 +75,21 @@
                 <img id='img-upload' style="margin-top: 10px; width: 200px"  src="{{ asset('storage/' . $testimonial->image) }}"/>
             </div>
         </div>
+        <div class="form-group">
+            <label>Icon</label>
+            <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse… <input type="file" id="imgInp2x" name="image_2x">
+                </span>
+            </span>
+                <input type="text" class="form-control" readonly>
+            </div>
+            <div class="col-12" style="text-align: center">
+
+                <img id='img-upload-2x' style="margin-top: 10px; width: 200px"  src="{{ asset('storage/' . $testimonial->image_2x) }}"/>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 @endsection
