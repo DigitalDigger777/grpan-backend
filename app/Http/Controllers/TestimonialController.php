@@ -63,12 +63,14 @@ class TestimonialController extends Controller
         ]);
 
         $path = $request->file('image')->store('public/testimonial_images');
+        $path_2x = $request->file('image_2x')->store('public/testimonial_images');
 
         $testimonial = new Testimonial([
             'name'          => $request->get('name'),
             'signature'     => $request->get('signature'),
             'description'   => $request->get('description'),
             'image'         => $path,
+            'image_2x'         => $path_2x,
             'ordering'      => $request->get('ordering'),
             'locale'        => $request->get('locale')
         ]);
@@ -133,6 +135,10 @@ class TestimonialController extends Controller
             $path = $request->file('image')->store('public/testimonial_images');
         }
 
+        if ($request->file('image_2x')) {
+            $path_2x = $request->file('image_2x')->store('public/testimonial_images');
+        }
+
         $gameId = $request->get('game');
 
 
@@ -144,6 +150,10 @@ class TestimonialController extends Controller
 
         if ($request->file('image')) {
             $testimonial->image = $path;
+        }
+
+        if ($request->file('image_2x')) {
+            $testimonial->image_2x = $path_2x;
         }
 
         $testimonial->ordering = $request->get('ordering');

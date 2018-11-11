@@ -66,12 +66,26 @@
                         Browse… <input type="file" id="image" name="image">
                     </span>
                 </span>
-                <input type="text" class="form-control" readonly>
+                <input id="imgInp" type="text" class="form-control" readonly>
             </div>
             <div class="col-12" style="text-align: center">
                 <img id="img-upload" style="margin-top: 10px; width: 200px" src="{{ asset('storage/' . $game->image) }}"/>
             </div>
+        </div>
 
+        <div class="form-group">
+            <label>Game Image @2x</label>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-default btn-file">
+                        Browse… <input type="file" id="image_2x" name="image_2x">
+                    </span>
+                </span>
+                <input id="imgInp2x" type="text" class="form-control" readonly>
+            </div>
+            <div class="col-12" style="text-align: center">
+                <img id="img-upload-2x" style="margin-top: 10px; width: 200px" src="{{ asset('storage/' . $game->image_2x) }}"/>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

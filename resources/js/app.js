@@ -47,7 +47,19 @@ $(document).ready( function() {
 
             reader.onload = function (e) {
                 $('#img-upload').attr('src', e.target.result);
-            }
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function readURL2x(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img-upload-2x').attr('src', e.target.result);
+            };
 
             reader.readAsDataURL(input.files[0]);
         }
@@ -55,5 +67,9 @@ $(document).ready( function() {
 
     $("#imgInp").change(function(){
         readURL(this);
+    });
+
+    $("#imgInp2x").change(function(){
+        readURL2x(this);
     });
 });

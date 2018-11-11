@@ -71,6 +71,7 @@ class GameController extends Controller
         ]);
 
         $path = $request->file('image')->store('public/images');
+        $path_2x = $request->file('image_2x')->store('public/images');
         $categoryId = $request->get('category');
 
         $category = GameCategory::find($categoryId);
@@ -79,6 +80,7 @@ class GameController extends Controller
             'name'  => $request->get('name'),
             'url'    => $request->get('url'),
             'image'  => $path,
+            'image_2x'  => $path_2x,
             'locale' => $request->get('locale')
         ]);
         $game->category()->associate($category);
@@ -138,6 +140,10 @@ class GameController extends Controller
             $path = $request->file('image')->store('public/images');
         }
 
+        if ($request->file('image_2x')) {
+            $path_2x = $request->file('image_2x')->store('public/images');
+        }
+
         $categoryId = $request->get('category');
 
         $category = GameCategory::find($categoryId);
@@ -147,6 +153,10 @@ class GameController extends Controller
         $game->url = $request->get('url');
         if ($request->file('image')) {
             $game->image = $path;
+        }
+
+        if ($request->file('image_2x')) {
+            $game->image_2x = $path_2x;
         }
         $game->locale = $request->get('locale');
         $game->category()->associate($category);
