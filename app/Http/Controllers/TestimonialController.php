@@ -83,7 +83,7 @@ class TestimonialController extends Controller
         }
         $testimonial->save();
 
-        return redirect('admin/testimonials')->with('success', 'Testimonials has been added');
+        return redirect('admin/testimonials?locale=' . $request->get('locale'))->with('success', 'Testimonials has been added');
     }
 
     /**
