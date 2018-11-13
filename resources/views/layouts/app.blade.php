@@ -93,9 +93,9 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('admin/job-category') ? 'active' : '' }}" href="{{ url('admin/job-category') }}">Jobs categories</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->is('admin/job') ? 'active' : '' }}" href="{{ url('admin/job') }}">Jobs</a>
-                            </li>
+                            {{--<li class="nav-item">--}}
+                                {{--<a class="nav-link {{ request()->is('admin/job') ? 'active' : '' }}" href="{{ url('admin/job') }}">Jobs</a>--}}
+                            {{--</li>--}}
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('admin/gpg-perks') ? 'active' : '' }}" href="{{ url('admin/gpg-perks') }}">GPG Perks</a>
                             </li>
