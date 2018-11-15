@@ -11,11 +11,13 @@ class GPGPerksController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = GPGPerk::all();
+        $locale = $request->get('locale', "EN");
+        $items = GPGPerk::where('locale', $locale)->get();
         return response()->json($items);
     }
 

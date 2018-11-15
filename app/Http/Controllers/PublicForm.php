@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Mail;
 
 class PublicForm extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function send(Request $request)
     {
         $request->validate([

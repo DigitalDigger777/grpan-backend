@@ -90,9 +90,9 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->is('admin/game') ? 'active' : '' }}" href="{{ url('admin/game') }}">Games</a>
                             </li>
-                            {{--<li class="nav-item">--}}
-                                {{--<a class="nav-link {{ request()->is('admin/job-category') ? 'active' : '' }}" href="{{ url('admin/job-category') }}">Jobs categories</a>--}}
-                            {{--</li>--}}
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('admin/job-category') ? 'active' : '' }}" href="{{ url('admin/job-category') }}">Jobs categories</a>
+                            </li>
                             {{--<li class="nav-item">--}}
                                 {{--<a class="nav-link {{ request()->is('admin/job') ? 'active' : '' }}" href="{{ url('admin/job') }}">Jobs</a>--}}
                             {{--</li>--}}

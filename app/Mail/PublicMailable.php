@@ -40,6 +40,6 @@ class PublicMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.public');
+        return $this->from($this->email)->view('emails.public');
     }
 }
