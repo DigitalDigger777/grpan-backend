@@ -40,6 +40,6 @@ class PublicMailable extends Mailable
      */
     public function build()
     {
-        return $this->from($this->email)->view('emails.public');
+        return $this->subject('Green Panda Games Publishing')->from($this->email)->view('emails.public');
     }
 }
